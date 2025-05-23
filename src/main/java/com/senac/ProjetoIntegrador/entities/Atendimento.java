@@ -1,8 +1,8 @@
 package com.senac.ProjetoIntegrador.entities;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
 
@@ -37,9 +37,27 @@ public class Atendimento implements Serializable {
     private Date dataAgendada;
 
     @Column(name = "preco", precision = 10, scale = 2)
-    private Double preco;
+    private BigDecimal preco;
+
+    @Column(name = "ativo")
+    private boolean ativo;
 
     public Atendimento() {}
+
+    public Atendimento(Integer id, Animal animal, Usuario usuario, String descricao, Integer atendimentoHoras,
+                       Time horaAgendada, Date dataAgendada, BigDecimal preco, boolean ativo) {
+        this.id = id;
+        this.animal = animal;
+        this.usuario = usuario;
+        this.descricao = descricao;
+        this.atendimentoHoras = atendimentoHoras;
+        this.horaAgendada = horaAgendada;
+        this.dataAgendada = dataAgendada;
+        this.preco = preco;
+        this.ativo = ativo;
+    }
+
+    // Getters e setters
 
     public Integer getId() {
         return id;
@@ -97,23 +115,19 @@ public class Atendimento implements Serializable {
         this.dataAgendada = dataAgendada;
     }
 
-    public Double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(Double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 
-    public Atendimento(Integer id, Animal animal, Usuario usuario, String descricao, Integer atendimentoHoras, Time horaAgendada, Date dataAgendada, Double preco) {
-        this.id = id;
-        this.animal = animal;
-        this.usuario = usuario;
-        this.descricao = descricao;
-        this.atendimentoHoras = atendimentoHoras;
-        this.horaAgendada = horaAgendada;
-        this.dataAgendada = dataAgendada;
-        this.preco = preco;
+    public boolean isAtivo() {
+        return ativo;
     }
-// Getters e Setters
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 }

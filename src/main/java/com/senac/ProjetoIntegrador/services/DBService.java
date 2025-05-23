@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,36 +32,38 @@ public class DBService {
 
         // Criar Usuário (Tutor)
         Usuario tutor = new Usuario();
-        tutor.setA_login("lucas123");
-        tutor.setB_senha("senha123");
-        tutor.setC_nome("Lucas Oliveira");
-        tutor.setD_cpf("123.456.789-00");
-        tutor.setE_celular("11999999999");
-        tutor.setF_data_nascimento(sdf.parse("01/01/1990"));
-        tutor.setG_endereco("Rua das Flores, 123");
-        tutor.setH_cidade("São Paulo");
-        tutor.setI_estado("SP");
-        tutor.setJ_cep("01234-567");
-
+        tutor.setLogin("lucas123");
+        tutor.setSenha("senha123");
+        tutor.setNome("Lucas Oliveira");
+        tutor.setCpf("123.456.789-00");
+        tutor.setCelular("11999999999");
+        tutor.setData_nascimento(sdf.parse("01/01/1990"));
+        tutor.setEndereco("Rua das Flores, 123");
+        tutor.setCidade("São Paulo");
+        tutor.setEstado("SP");
+        tutor.setCep("01234-567");
         usuarioRepository.save(tutor);
 
         // Criar Animal vinculado ao Tutor
         Animal pet = new Animal();
         pet.setNome("Thor");
-        pet.setEspecie("Cachorro");
-        pet.setRaca("Labrador");
+        /*pet.setEspecie("Cachorro");
+        pet.setRaca("Labrador");*/
         pet.setDataNascimento(sdf.parse("10/10/2020"));
         pet.setAtivo(true);
-        pet.setUsuario(tutor); // associando o tutor
+        pet.setUsuario(tutor);
         animalRepository.save(pet);
 
-        // Criar Atendimento vinculado ao Animal e ao Tutor
+        // Criar Atendimento vinculado ao Animal e Tutor
         Atendimento atendimento = new Atendimento();
         atendimento.setDescricao("Consulta de rotina");
-        atendimento.setAtivo(true);
-        atendimento.setDataAtendimento(new Date()); // data atual
-        atendimento.setUsuario(tutor);
-        atendimento.setAnimal(pet);
+        atendimento.setAtendimentoHoras(1);
+        atendimento.setDataAgendada(new Date()); // Data agendada da consulta
+        atendimento.setHoraAgendada(new java.sql.Time(System.currentTimeMillis())); // Hora agendada
+        atendimento.setPreco(BigDecimal.valueOf(150.00));
+        atendimento.setUsuario(tutor); // Tutor associado
+        atendimento.setAnimal(pet);    // Animal associado
+        atendimento.setAtivo(true);    // Ativo (supondo que a entidade tenha esse campo)
         atendimentoRepository.save(atendimento);
 
         return "Banco instanciado com sucesso!";

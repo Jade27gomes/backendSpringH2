@@ -1,7 +1,6 @@
 package com.senac.ProjetoIntegrador.entities;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -35,12 +34,37 @@ public class Animal implements Serializable {
     @Column(name = "sexo", length = 1)
     private String sexo;
 
-    // Relacionamento com atendimentos
+    /*@Column(name = "especie")
+    private String especie;
+
+    @Column(name = "raca")
+    private String raca;*/
+
+    @Column(name = "ativo")
+    private boolean ativo = true;
+
     @OneToMany(mappedBy = "animal")
     private List<Atendimento> atendimentos;
 
     public Animal() {}
 
+    public Animal(Integer id, Usuario usuario, String nome, String deficiencias, String intolerancias,
+                  Date dataNascimento, String sexo, /*String especie, String raca,*/ boolean ativo,
+                  List<Atendimento> atendimentos) {
+        this.id = id;
+        this.usuario = usuario;
+        this.nome = nome;
+        this.deficiencias = deficiencias;
+        this.intolerancias = intolerancias;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        /*this.especie = especie;
+        this.raca = raca;*/
+        this.ativo = ativo;
+        this.atendimentos = atendimentos;
+    }
+
+    // Getters e Setters
     public Integer getId() {
         return id;
     }
@@ -97,6 +121,30 @@ public class Animal implements Serializable {
         this.sexo = sexo;
     }
 
+    /*public String getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
+    }*/
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
     public List<Atendimento> getAtendimentos() {
         return atendimentos;
     }
@@ -104,16 +152,4 @@ public class Animal implements Serializable {
     public void setAtendimentos(List<Atendimento> atendimentos) {
         this.atendimentos = atendimentos;
     }
-
-    public Animal(Integer id, Usuario usuario, String nome, String deficiencias, String intolerancias, Date dataNascimento, String sexo, List<Atendimento> atendimentos) {
-        this.id = id;
-        this.usuario = usuario;
-        this.nome = nome;
-        this.deficiencias = deficiencias;
-        this.intolerancias = intolerancias;
-        this.dataNascimento = dataNascimento;
-        this.sexo = sexo;
-        this.atendimentos = atendimentos;
-    }
-// Getters e Setters
 }

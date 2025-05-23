@@ -8,125 +8,147 @@ import java.util.Date;
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id_novoUsuario;
+        @Column(name = "id_novoUsuario")
+        private Integer id;
 
-        private String a_login;
-        private String b_senha;
-        private String c_nome;
-        private String d_cpf;
-        private String e_celular;
-        private Date f_data_nascimento;
-        private String g_endereco;
-        private String h_cidade;
-        private String i_estado;
-        private String j_cep;
+        @Column(name = "login")
+        private String login;
+        @Column(name = "senha")
+        private String senha;
+        @Column(name = "nome")
+        private String nome;
+        @Column(name = "cpf")
+        private String cpf;
+        @Column(name = "celular")
+        private String celular;
+        @Column(name = "data_nascimento")
+        private Date data_nascimento;
+        @Column(name = "endereco")
+        private String endereco;
+        @Column(name = "cidade")
+        private String cidade;
+        @Column(name = "estado")
+        private String estado;
+        @Column(name = "cep")
+        private String cep;
+        @Column(name = "ativo")
+        private boolean ativo = true;
 
         // Construtor sem parâmetros (padrão)
         public Usuario() {}
 
         // Construtor com todos os parâmetros
-        public Usuario(String a_login, String b_senha, String c_nome, String d_cpf, String e_celular,
-                       Date f_data_nascimento, String g_endereco, String h_cidade, String i_estado, String j_cep) {
-            this.a_login = a_login;
-            this.b_senha = b_senha;
-            this.c_nome = c_nome;
-            this.d_cpf = d_cpf;
-            this.e_celular = e_celular;
-            this.f_data_nascimento = f_data_nascimento;
-            this.g_endereco = g_endereco;
-            this.h_cidade = h_cidade;
-            this.i_estado = i_estado;
-            this.j_cep = j_cep;
+        public Usuario(String login, String senha, String nome, String cpf, String celular,
+                       Date data_nascimento, String endereco, String cidade, String estado, String cep, boolean ativo) {
+            this.login = login;
+            this.senha = senha;
+            this.nome = nome;
+            this.cpf = cpf;
+            this.celular = celular;
+            this.data_nascimento = data_nascimento;
+            this.endereco = endereco;
+            this.cidade = cidade;
+            this.estado = estado;
+            this.cep = cep;
+            this.ativo = ativo;
         }
 
         // Getters e Setters (já fornecido anteriormente)
-        public Integer getId_novoUsuario() {
-            return id_novoUsuario;
+        public Integer getId() {
+            return id;
         }
 
-        public void setId_novoUsuario(Integer id_novoUsuario) {
-            this.id_novoUsuario = id_novoUsuario;
+        public void setId(Integer id) {
+            this.id = id;
         }
 
-        public String getA_login() {
-            return a_login;
+        public String getLogin() {
+            return login;
         }
 
-        public void setA_login(String a_login) {
-            this.a_login = a_login;
+        public void setLogin(String login) {
+            this.login = login;
         }
 
-        public String getB_senha() {
-            return b_senha;
+        public String getSenha() {
+            return senha;
         }
 
-        public void setB_senha(String b_senha) {
-            this.b_senha = b_senha;
+        public void setSenha(String senha) {
+            this.senha = senha;
         }
 
-        public String getC_nome() {
-            return c_nome;
+        public String getNome() {
+            return nome;
         }
 
-        public void setC_nome(String c_nome) {
-            this.c_nome = c_nome;
+        public void setNome(String nome) {
+            this.nome = nome;
         }
 
-        public String getD_cpf() {
-            return d_cpf;
+        public String getCpf() {
+            return cpf;
         }
 
-        public void setD_cpf(String d_cpf) {
-            this.d_cpf = d_cpf;
+        public void setCpf(String cpf) {
+            this.cpf = cpf;
         }
 
-        public String getE_celular() {
-            return e_celular;
+        public String getCelular() {
+            return celular;
         }
 
-        public void setE_celular(String e_celular) {
-            this.e_celular = e_celular;
+        public void setCelular(String celular) {
+            this.celular = celular;
         }
 
-        public Date getF_data_nascimento() {
-            return f_data_nascimento;
+        public Date getData_nascimento() {
+            return data_nascimento;
         }
 
-        public void setF_data_nascimento(Date f_data_nascimento) {
-            this.f_data_nascimento = f_data_nascimento;
+        public void setData_nascimento(Date data_nascimento) {
+            this.data_nascimento = data_nascimento;
         }
 
-        public String getG_endereco() {
-            return g_endereco;
+        public String getEndereco() {
+            return endereco;
         }
 
-        public void setG_endereco(String g_endereco) {
-            this.g_endereco = g_endereco;
+        public void setEndereco(String endereco) {
+            this.endereco = endereco;
         }
 
-        public String getH_cidade() {
-            return h_cidade;
+        public String getCidade() {
+            return cidade;
         }
 
-        public void setH_cidade(String h_cidade) {
-            this.h_cidade = h_cidade;
+        public void setCidade(String cidade) {
+            this.cidade = cidade;
         }
 
-        public String getI_estado() {
-            return i_estado;
+        public String getEstado() {
+            return estado;
         }
 
-        public void setI_estado(String i_estado) {
-            this.i_estado = i_estado;
+        public void setEstado(String estado) {
+            this.estado = estado;
         }
 
-        public String getJ_cep() {
-            return j_cep;
+        public String getCep() {
+            return cep;
         }
 
-        public void setJ_cep(String j_cep) {
-            this.j_cep = j_cep;
+        public void setCep(String cep) {
+            this.cep = cep;
+        }
+
+        public boolean getAtivo() {
+            return ativo;
+        }
+
+        public void setAtivo(boolean ativo) {
+            this.ativo = ativo;
         }
     }
 
-}
+

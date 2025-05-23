@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AnimalService {
+
     @Autowired
     private AnimalRepository animalRepository;
 
@@ -22,7 +22,7 @@ public class AnimalService {
     }
 
     public List<Animal> findByTutorRa(int ra) {
-        return animalRepository.findByTutorRa(ra);
+        return animalRepository.findByUsuarioId(ra);
     }
 
     public Animal save(Animal animal) {
@@ -37,11 +37,11 @@ public class AnimalService {
         Animal existente = findById(id);
         if (existente != null) {
             existente.setNome(novoAnimal.getNome());
-            existente.setEspecie(novoAnimal.getEspecie());
-            existente.setRaca(novoAnimal.getRaca());
+            /*existente.setEspecie(novoAnimal.getEspecie());
+            existente.setRaca(novoAnimal.getRaca());*/
             existente.setDataNascimento(novoAnimal.getDataNascimento());
             existente.setAtivo(novoAnimal.isAtivo());
-            existente.setTutor(novoAnimal.getTutor());
+            existente.setUsuario(novoAnimal.getUsuario());
             return animalRepository.save(existente);
         }
         return null;

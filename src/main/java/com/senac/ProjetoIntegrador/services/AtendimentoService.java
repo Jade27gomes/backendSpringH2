@@ -21,7 +21,7 @@ public class AtendimentoService {
     }
 
     public List<Atendimento> findByTutorRa(int ra) {
-        return atendimentoRepository.findByTutorRa(ra);
+        return atendimentoRepository.findByUsuarioId(ra);
     }
 
     public List<Atendimento> findByAnimalId(int id) {
@@ -43,11 +43,13 @@ public class AtendimentoService {
     public Atendimento update(Integer id, Atendimento novoAtendimento) {
         Atendimento existente = findById(id);
         if (existente != null) {
-            existente.setDataAtendimento(novoAtendimento.getDataAtendimento());
+            existente.setDataAgendada(novoAtendimento.getDataAgendada());
+            existente.setHoraAgendada(novoAtendimento.getHoraAgendada());
             existente.setDescricao(novoAtendimento.getDescricao());
-            existente.setAtivo(novoAtendimento.isAtivo());
+            existente.setAtendimentoHoras(novoAtendimento.getAtendimentoHoras());
+            existente.setPreco(novoAtendimento.getPreco());
             existente.setAnimal(novoAtendimento.getAnimal());
-            existente.setTutor(novoAtendimento.getTutor());
+            existente.setUsuario(novoAtendimento.getUsuario());
             return atendimentoRepository.save(existente);
         }
         return null;
